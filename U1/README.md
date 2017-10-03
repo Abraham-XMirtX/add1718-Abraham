@@ -21,35 +21,60 @@ ___
 ##### Instalación del SSOO:
 
 Vamos con la instalación, le damos a Instalar Xubuntu
+
 ![image](img/xu1)
+
 Descargamos las actualizaciones
+
 ![image](img/xu2.png)
+
 Hacemos click en Instalar ahora
+
 ![image](img/xu3.png)
+
 Elegimos la franja horaria donde estasmos
+
 ![image](img/xu5.png)
+
 Elegimos el idioma de nuestro teclado
+
 ![image](img/xu6.png)
+
 Rellenamos los datos para la instalación
+
 ![image](img/xu7.png)
+
 Y esperamos a que termine la instalación
+
 ![image](img/xu8.png)
+
 
 ##### Configuración Xubuntu:
 
 Vamos a cambiar la configuración de red, dejando una IP estatica para nuestro servidor.
+
 ![image](img/xu9.png)
+
 En la Adaptador Puente le ponemos la siguiente configuración:
+
 ![image](img/xu10.png)
+
 En la Interna dejamos la siguiente configuración:
+
 ![image](img/xu11.png)
+
 Ejecutamos el siguiente comando para ver que se efectuo el cambio.
+
 > ip a
 
 ![image](img/xu12.png)
+
 Vamos a configurar el Nombre de Dominio de nuestra maquina, modificamos el archivo "**etc/hostname**".
+
 ![image](img/xu13.png)
+
 Ahora modificamos el archivo "**etc/host**" para que se muestre el nombre de nuestra maquina al introducir el comando hostname -a.
+
 ![image](img/xu14.png)
 
 Vamos a poner una contraseña a root para eso usamos el comando "**passwd**"
