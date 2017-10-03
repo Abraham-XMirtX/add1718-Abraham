@@ -142,4 +142,4 @@ Entramos con el usuario "**cabello1**" en mi caso y comprobamos que estamos dent
 
 ### Video de demostración
 
-![Clientes Ligeros(LTSP)](img/xu35.png)(https://youtu.be/rt9X8cPsRvU)
+[![Clientes Ligeros(LTSP)](img/xu35.png)](https://youtu.be/rt9X8cPsRvU)
