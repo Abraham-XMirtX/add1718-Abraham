@@ -32,7 +32,7 @@ Hacemos click en Instalar ahora
 
 ![image](img/xu3.png)
 
-Elegimos la franja horaria donde estasmos
+Elegimos la franja horaria donde estamos
 
 ![image](img/xu5.png)
 
