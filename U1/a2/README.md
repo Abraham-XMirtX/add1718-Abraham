@@ -36,11 +36,11 @@ Abrimos el Yast , instalamos y activamos servicio VNC acceso remoto.
 
 ![image](img/opensuse/op3.png)
 
-Permintimos la administración
+Permintimos la administración.
 
 ![image](img/opensuse/op5.png)
 
-Y le damos a instalar
+Y le damos a instalar.
 
 ![image](img/opensuse/op6.png)
 
@@ -54,43 +54,43 @@ Es la herramineta que vamos usar para acceder remotamente a los equipo , viene p
 
 ## Configuración de Windows 10
 
-Vamos a usar Ip fijas tanto para la maquina cliente como servidor.
+Vamos a usar Ip fijas tanto para la máquina cliente como servidor.
 
 En el servidor usaremos la siguiente configuración:
 
 ![image](img/windows/ws1.png)
 
-En la maquina cliente:
+En la máquina cliente:
 
 ![image](img/windows/wc00.png)
 
 ### Instalación de VNC_Server Windows 10
 
-Vamos a utilizar el programa "TightVNC server"
+Vamos a utilizar el programa "TightVNC server".
 
 ![image](img/windows/ws02.png)
 
-Utilizamos la instalación "Custom"
+Utilizamos la instalación "Custom".
 
 ![image](img/windows/ws03.png)
 
-Quitamos el cliente del programa "TightVNC Viewer"
+Quitamos el cliente del programa "TightVNC Viewer".
 
 ![image](img/windows/ws04.png)
 
-Dejamos las configuraciónes por defecto
+Dejamos la configuración por defecto.
 
 ![image](img/windows/ws05.png)
 
-Y le damos a instalar
+Y le damos a instalar.
 
 ![image](img/windows/ws06.png)
 
-Despues nos piden una contrasseña de admin y otra para acceso remoto
+Despues nos piden una contraseña de admin y otra para acceso remoto.
 
 ![image](img/windows/ws07.png)
 
-Y le damos a finalizar
+Y le damos a finalizar.
 
 ![image](img/windows/ws08.png)
 
@@ -104,7 +104,7 @@ Hacemos los mismos pasos que el anterior lo uncio que cambian es la Instalación
 
 ## Conexion remota de Windows a Windows
 
-Vamos acceder con la maquina cliente  al servidor, abrimos el TightVNC_viewer.
+Vamos acceder con la máquina cliente  al servidor, abrimos el TightVNC_viewer.
 
 >Colocamos la IP del servidor y le damos a conectar.
 
@@ -124,7 +124,7 @@ Comprobamos con el comando "netstat -n para ver dicha conexion, utiliza el puert
 
 ## Conexion remota de linux a linux
 
-Accedemos con la maquina cliente al servidor con la herramineta VncViewer.
+Accedemos con la máquina cliente al servidor con la herramineta VncViewer.
 
 ![image](img/opensuse/opc04.png)
 
@@ -138,11 +138,11 @@ Abrimos el terminal y comprobamos la conexion con el comando "netstat -ntap | gr
 
 ## Conexion remota linux a windows
 
-Abrimos el terminal de OpenSuse y accedemos con el comando "VncViewer" a la maquina de windows 10
+Abrimos el terminal de OpenSuse y accedemos con el comando "VncViewer" a la máquina de windows 10
 
 ![image](img/windows/wo05.png)
 
-Nos pide la contrasela del acceso remoto y accedemos a la maquina y comprobamos con el comando "netstat -n"
+Nos pide la contrasela del acceso remoto y accedemos a la máquina y comprobamos con el comando "netstat -n"
 
 ![image](img/windows/wo06.png)
 
@@ -152,7 +152,7 @@ Nos pide la contrasela del acceso remoto y accedemos a la maquina y comprobamos 
 
 ## Conexion remota windows a linux
 
-Abrimos el programa TightVNC y accedemos a maquina OpenSuse entramos con el puerto que nos asigno el porgrama de linux
+Abrimos el programa TightVNC y accedemos a máquina OpenSuse entramos con el puerto que nos asigno el porgrama de linux
 
 ![image](img/windows/wo01.png)
 
@@ -160,7 +160,7 @@ Nos pide la contraseña de acceso
 
 ![image](img/windows/wo2.png)
 
-Y entramos en la maquina
+Y entramos en la máquina
 
 ![image](img/windows/wo04.png)
 
