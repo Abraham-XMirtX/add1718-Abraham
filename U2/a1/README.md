@@ -18,14 +18,7 @@
 
         ![image](img/imgs4.png)
 
-      * Comandos de comprobación.
-
-      ````
-      hostname -f
-      ip a
-      lsblk
-      blkid
-````
+        * Comandos de comprobación.
 
         ![image](img/imgs5.png)
         ![image](img/imgs6.png)
