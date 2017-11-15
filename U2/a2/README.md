@@ -1,4 +1,4 @@
-#Servidor LDAP - OpenSUSE
+# Servidor LDAP - OpenSUSE
 
 * 1.Servidor LDAP
 
