@@ -147,9 +147,13 @@
 * A través del navegador pausa todos los trabajos en la impresora.
 
   ![image](img/img25.png)
-  
+
 *  Envía a imprimir en tu impresora compartida un documento del Bloc de notas. La siguiente pantalla muestra que la impresora esta en pausa y con el trabajo en cola de impresión.
 
   ![image](img/img28.png)
 
 *  Finalmente pulsa en reanudar el trabajo para que tu documento se convierta a PDF. Comprobar que se puede imprimir desde un cliente Windows.
+
+  ![image](img/img29.png)
+
+  ![image](img/img30.png)
