@@ -229,73 +229,83 @@ Vamos a instalar y configurar el cliente 1.
 
 
 ### 3.1 Definir el host master puppet
-server=masterXX.curso1718
-...
-[agent]
-...
-# Desactivar los plugin para este agente
-pluginsync=false
 
-Veamos imagen de ejemplo de Raúl García Heredia:
+Vamos a la ruta ``/etc/puppet`` y modificamos el archivo puppet.conf
 
-    Comprobar que el directorio /var/lib/puppet tiene como usuario/grupo propietario puppet.
-    systemctl enable puppet: Activar el servicio en cada reinicio de la máquina.
-    systemctl start puppet: Iniciar el servicio puppet.
-    systemctl status puppet: Ver el estado del servicio puppet.
-    netstat -ntap |grep ruby: Muestra los servicios conectados a cada puerto.
-    Abrir el cortafuegos para el servicio.
+  ![img](img/img36.png)
 
-4. Certificados
+  *  Comprobar que el directorio /var/lib/puppet tiene como usuario/grupo propietario puppet.
+
+    ![img](img/img37.png)
+
+  *  systemctl enable puppet: Activar el servicio en cada reinicio de la máquina.
+
+  *  systemctl start puppet: Iniciar el servicio puppet.
+
+  *  systemctl status puppet: Ver el estado del servicio puppet.
+
+    ![img](img/img38.png)
+
+  *  Abrir el cortafuegos para el servicio.
+
+    ![img](img/img39.png)
+
+# 4. Certificados
 
 Para que el master acepte a cliente1 como cliente, se deben intercambiar los certificados entre ambas máquinas. Esto sólo hay que hacerlo una vez.
-4.1 Aceptar certificado
 
-    Vamos a la MV master.
+
+### 4.1 Aceptar certificado
+
+  *  Vamos a la maquina virtual master.
     Nos aseguramos de que somos el usuario root.
     puppet cert list, consultamos las peticiones pendientes de unión al master:
 
-root@master42# puppet cert list
-"cli1alu42.curso1718" (D8:EC:E4:A2:10:55:00:32:30:F2:88:9D:94:E5:41:D6)
-root@master42#
+  * Abrimos terminal y ejecutamos `puppet cert list`
 
-    En caso de no aparecer el certificado en espera
+      ![img](img/img40.png)
 
-        Si no aparece el certificado del cliente en la lista de espera del servidor, quizás el cortafuegos del servidor y/o cliente, está impidiendo el acceso.
-        Volver a reiniciar el servicio en el cliente y comprobar su estado.
+    > Este es certificado de nuestro cliente 1
 
-    puppet cert sign "nombre-máquina-cliente", aceptar al nuevo cliente desde el master:
+  * Y con `puppet cert sign "nombre-máquina-cliente"`
 
-root@master42# puppet cert sign "cli1alu42.curso1718"
-notice: Signed certificate request for cli1alu42.curso1718
-notice: Removing file Puppet::SSL::CertificateRequest cli1alu42.curso1718 at '/var/lib/puppet/ssl/ca/requests/cli1alu42.curso1718.pem'
+      ![img](img/img41.png)
 
-root@master42# puppet cert list
+    > Añadimos al cliente1 al master
 
-root@master42# puppet cert print cli1alu42.curso1718
-Certificate:
-Data:
-....
+  * Hacemos ahora un `puppet cert print "cliente1"`
 
-    A continuación podemos ver una imagen de ejemplo, los datos no tienen que coincidir con lo que se pide en el ejercicio.
+      ![img](img/img42.png)
 
-    opensuse-puppet-cert-list.png
+    > En este caso nos muestra el certificado.
 
-4.2 Comprobación
+### 4.2 Comprobación
 
 Vamos a comprobar que las órdenes (manifiesto) del master, llega bien al cliente y éste las ejecuta.
 
-    Vamos a cliente1
-    Reiniciamos la máquina y/o el servicio Puppet.
-    Comprobar que los cambios configurados en Puppet se han realizado.
-    Nos aseguramos de que somos el usuario root.
-    Ejecutar comando para forzar la ejecución del agente puppet:
-        puppet agent --test
-        o también puppet agent --server master42.curso1718 --test
-    En caso de tener errores:
-        Para ver el detalle de los errores, podemos reiniciar el servicio puppet en el cliente, y consultar el archivo de log del cliente: tail /var/log/puppet/puppet.log.
-        Puede ser que tengamos algún mensaje de error de configuración del fichero /etc/puppet/manifests/site.pp del master. En tal caso, ir a los ficheros del master y corregir los errores de sintáxis.
+  *  Vamos a cliente1:
 
-4.3 Información: ¿Cómo eliminar certificados?
+    * Reiniciamos la máquina y/o el servicio Puppet.
+
+      `systemctl restart puppetmaster.service`
+
+    * Comprobar que los cambios configurados en Puppet se han realizado.
+
+      ![img](img/img46.png)
+
+    * Ejecutar comando para forzar la ejecución del agente puppet:
+
+    *  puppet agent --test
+
+      ![img](img/img45.png)
+
+  * En caso de tener errores:
+
+    Consultar el archivo de log del cliente: `tail /var/log/puppet/puppet.log.`
+
+      ![img](img/img44.png)
+
+### 4.3 Información: ¿Cómo eliminar certificados?
 
 Esto NO HAY QUE HACERLO. Sólo es informativo
 
@@ -310,211 +320,138 @@ Si tenemos problemas con los certificados, y queremos eliminar los certificados 
     En el cliente:
         rm -rf /var/lib/puppet/ssl, eliminar los certificados del cliente. Apagamos el cliente.
 
-    Consultar URL https://wiki.tegnix.com/wiki/Puppet, para más información.
 
-5. Segunda versión del fichero pp
+# 5. Segunda versión del fichero pp
 
 Ya hemos probado una configuración sencilla en PuppetMaster. Ahora vamos a pasar a configurar algo más complejo.
 
-    Contenido para /etc/puppet/manifests/classes/hostlinux2.pp:
+  *  Contenido para /etc/puppet/manifests/classes/hostlinux2.pp:
 
-class hostlinux2 {
-  package { "tree": ensure => installed }
-  package { "traceroute": ensure => installed }
-  package { "geany": ensure => installed }
+      ![img](img/img47.png)
 
-  group { "piratas": ensure => "present", }
-  group { "admin": ensure => "present", }
+  *  Las órdenes anteriores de configuración de recursos puppet, tienen el significado siguiente:
 
-  user { 'barbaroja':
-    home => '/home/barbaroja',
-    shell => '/bin/bash',
-    password => 'poner-una-clave-encriptada',
-    groups => ['piratas','admin','root']
-  }
+  > IMPORTANTE
 
-  file { "/home/barbaroja":
-    ensure => "directory",
-    owner => "barbaroja",
-    group => "piratas",
-    mode => 750
-  }
+  > package: indica paquetes que queremos que estén o no en el sistema.
 
-  file { "/home/barbaroja/share":
-    ensure => "directory",
-    owner => "barbaroja",
-    group => "piratas",
-    mode => 750
-  }
+  >group: creación o eliminación de grupos.
 
-  file { "/home/barbaroja/share/private":
-    ensure => "directory",
-    owner => "barbaroja",
-    group => "piratas",
-    mode => 700
-  }
+  >user: Creación o eliminación de usuarios.
 
-  file { "/home/barbaroja/share/public":
-    ensure => "directory",
-    owner => "barbaroja",
-    group => "piratas",
-    mode => 755
-  }
-}
+  >file: directorios o ficheros para crear o descargar desde servidor.
 
-    Las órdenes anteriores de configuración de recursos puppet, tienen el significado siguiente:
+  >exec: Para ejecutar comandos/scripts.
 
-        package: indica paquetes que queremos que estén o no en el sistema.
-        group: creación o eliminación de grupos.
-        user: Creación o eliminación de usuarios.
-        file: directorios o ficheros para crear o descargar desde servidor.
-        exec: Para ejecutar comandos/scripts.
+  *  Modificar /etc/puppet/manifests/site.pp para que se use la configuración de hostlinux2 el lugar de la anterior:
 
-    Modificar /etc/puppet/manifests/site.pp para que se use la configuración de hostlinux2 el lugar de la anterior:
+    ![img](img/img48.png)
 
-import "classes/*"
+  *  Vamos al servidor:
 
-node default {
-  include hostlinux2
-}
+    * Ejecutar tree /etc/puppet para comprobar ficheros y directorios.
 
-    node default indica que las órdenes de Puppet se van a aplicar a todos los nodos clientes.
+        ![img](img/img49.png)
 
-Vamos al servidor:
+    * Reiniciar el servicio.
 
-    Ejecutar tree /etc/puppet para comprobar ficheros y directorios.
-    Reiniciar el servicio. Vamos al cliente1;
-    Comprobar que se han aplicado los cambios solicitados.
+      `systemctl restart puppetmaster.service`
 
-6. Cliente puppet Windows
+  * Vamos al cliente1;
+
+    * Comprobar que se han aplicado los cambios solicitados.
+
+        ![img](img/img50.png)
+
+        ![img](img/img51.png)
+
+        ![img](img/img52.png)
+
+# 6. Cliente puppet Windows
 
 Vamos a configurar Puppet para atender también a clientes Windows.
 
-IMPORTANTE: Asegurarse de que todas las máquinas tienen la fecha/hora correcta.
+> IMPORTANTE: Asegurarse de que todas las máquinas tienen la fecha/hora correcta.
 
-    Enlace de interés:
 
-        http://docs.puppetlabs.com/windows/writing.html
+### 6.1 Configuración hostwindows3.pp
 
-6.1 Configuración hostwindows3.pp
+  * Vamos a la MV master.
 
-    Vamos a la MV master.
-    Vamos a crear una configuración puppet para las máquinas windows, dentro del fichero.
-    Crear /etc/puppet/manifests/classes/hostwindows3.pp, con el siguiente contenido:
+    * Vamos a crear una configuración puppet para las máquinas windows, dentro del fichero.
 
-class hostwindows3 {
-  file {'C:\warning.txt':
-    ensure => 'present',
-    content => "Hola Mundo Puppet!",
-  }
-}
+    * Crear/etc/puppet/manifests/classes/hostwindows3.pp, con el siguiente contenido:
 
-    Recordatorio: NOMBRES DE MÁQUINA
+      ![img](img/img53.png)
 
-        El master GNU/Linux del ejemplo se llama master42.curso1718
-        El cliente1 GNU/Linux del ejemplo se llama cli1alu42.curso1718
-        El cliente2 Windows del ejemplo se llama cli2alu42
+    * Ahora vamos a modificar el fichero site.pp del master, para que tenga en cuenta la configuración de clientes GNU/Linux y clientes Windows, de modo diferenciado:
 
-    Ahora vamos a modificar el fichero site.pp del master, para que tenga en cuenta la configuración de clientes GNU/Linux y clientes Windows, de modo diferenciado:
+      ![img](img/img54.png)
 
-import "classes/*"
+    *  En el servidor ejecutamos tree /etc/puppet, para confirmar que tenemos los nuevos archivos.
 
-node 'cli1alu42.curso1617' {
-  include hostlinux2
-}
+      ![img](img/img55.png)
 
-node 'cli2alu42' {
-  include hostwindows3
-}
+    * Reiniciamos el servicio PuppetMaster.
 
-    En el servidor ejecutamos tree /etc/puppet, para confirmar que tenemos los nuevos archivos.
-    Reiniciamos el servicio PuppetMaster.
-    Ejecutamos el comando facter, para ver la versión de Puppet que está usando el master.
+      `systemctl restart puppetmaster.service`
 
-6.2 Instalar el cliente2 Windows
+### 6.2 Instalar el cliente2 Windows
 
-    Enlaces de interés:
-
-        http://docs.puppetlabs.com/windows?/installing.html
-        https://downloads.puppetlabs.com/windows/
 
 Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la misma versión en ambos equipos. Podemos usar comando facter para ver la versión de puppet del servidor.
 
-    Vamos al cliente Windows.
-    Descargamos e instalamos la versión de Agente Puppet para Windows similar al Puppet Master.
-    El fichero puppet.conf en Windows está en C:\ProgramData\PuppetLabs\puppet\etc\puppet.conf. (ProgramData es una ruta oculta). Revisar que tenga algo como:
+  ![img](img/img56.png)
 
-[main]
-server=masterXX.curso1718 # Definir el host master
-pluginsync=false          # Desactivar los plugin
+  *  Vamos al cliente Windows.
 
-    Reiniciamos la MV.
-    Debemos aceptar el certificado en el master para este nuevo cliente. Consultar apartado anterior y repetir los pasos para este nuevo cliente.
+      * Descargamos e instalamos la versión de Agente Puppet para Windows similar al Puppet Master.
 
-    Si no aparece el cliente Windows en el master
+      > En nuestro caso usamos la versión 3.8.7
 
-    Si en el master no nos aparece el certificado del cliente windows para ser aceptado, probar lo siguiente:
+    * El fichero puppet.conf en Windows está en `C:\ProgramData\PuppetLabs\puppet\etc\puppet.conf.`
 
-        Ir a cli2aluXX
-        Ejecutar el "Agente Puppet"
-        Abrir "Consola Puppet" -> Ejecutar puppet agent --server masterXX.curso1718 --test.
-        Ir a masterXX -> puppet cert list
-        Capturar pantallas de estos pasos.
+      ![img](img/img57.png)
 
-    ¿Cómo desintalar Puppet en Windows?
+    * Reiniciamos la MV.
+    Debemos aceptar el certificado en el master para este nuevo cliente.
 
-    Si tenemos problemas con el certificado de la máquina windows cliente tenemos que seguir los siguientes pasos para eliminar cualquier rastro de los mismos y poder reintentar la comunicación:
+    `puppet cert list`
 
-        Borrar en el maestro el certificado correspondiente a esa máquina puppet cert clean nombre-netbios-cliente.
-        Desinstalar el agente puppet en windows.
-        Borrar las carpetas de datos del puppet, ya que no se borran en la desinstalación. Las carpetas son:
-            C:\ProgramData\PuppetLabs y
-            C:\Users\usuario\.puppet.
-        Reiniciar Windows
-        Reinstalar Puppet y volver a probar.
+      ![img](img/img58.png)
 
-    Si seguimos teniendo problemas para unir/conectar el cliente windows con el puppetmaster, porque no se realice el intercambio de certificados podemos:
+    `puppet cert sign client 2 `
 
-        Repetir las recomendaciones anteriores para limpiar los datos, poner un nombre nuevo y diferente a la máquina Windows e intentarlo de nuevo.
-        o usar una máquina Windows nueva (limpia de las acciones anteriores).
+      ![img](img/img59.png)
 
-6.3 Comprobamos los cambios
+    `puppet cert print cliente2`
 
-    Vamos al cliente2.
+      ![img](img/img60.png)
 
-Con los comandos siguientes podremos hacernos una idea de como terminar de configurar el fichero puppet del master para la máquina Windows.
+    * Comprobamos que esta conectado con el master25
 
-    Iniciar consola puppet como administrador y probar los comandos:
-        puppet agent --configprint server, debe mostrar el nombre del servidor puppet. En nuestro ejemplo debe ser masterXX.curso1718.
-        puppet agent --server masterXX.curso1718 --test: Comprobar el estado del agente puppet.
-        puppet agent -t --debug --verbose: Comprobar el estado del agente puppet.
-        facter: Para consultar datos de la máquina windows, como por ejemplo la versión de puppet del cliente.
-        puppet resource user nombre-alumno1: Para ver la configuración puppet del usuario.
-        puppet resource file c:\Users: Para var la configuración puppet de la carpeta.
+      ![img](img/img61.png)
 
-    Veamos imagen de ejemplo:
 
-    puppet-resource-windows
+# 7. Configuración hostwindows4.pp
 
-7. Configuración hostwindows4.pp
+  * Configuramos en el master el fichero /etc/puppet/manifests/classes/hostwindows4.pp para el cliente Windows:
 
-    Configuramos en el master el fichero /etc/puppet/manifests/classes/hostwindows4.pp para el cliente Windows:
+    ![img](img/img62.png)
 
-class hostwindows4 {
-  user { 'soldado1':
-    ensure => 'present',
-    groups => ['Administradores'],
-  }
+  * Incluimos en el fichero site.pp
 
-  user { 'aldeano1':
-    ensure => 'present',
-    groups => ['Usuarios'],
-  }
-}
+    ![img](img/img63.png)
 
-    Comprobar que funciona.
+  *  Comprobar que funciona.
 
-8. Configuración personalizada: hostalumno5.pp
+# 8. Configuración personalizada: hostalumno5.pp
 
-    Crear un nuevo fichero de configuración para la máquina cliente Windows con el nombre /etc/puppet/manifests/classes/hostalumno5.pp.
-    Incluir configuraciones elegidas por el alumno y probarlas.
+  *  Crear un nuevo fichero de configuración para la máquina cliente Windows con el nombre /etc/puppet/manifests/classes/hostalumno5.pp.
+
+    ![img](img/img64.png)
+
+  * Incluimos en el fichero site.pp
+
+    ![img](img/img65.png)
+  
