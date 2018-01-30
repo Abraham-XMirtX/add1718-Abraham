@@ -4,67 +4,67 @@
 
 Vamos a hacer una tarea diferida con Windows. Una tarea diferida se define para ejecutarse una sola vez en una fecha futura.
 
-  *  En Windows 10 para abrir el programador de tareas hacemos Panel de control -> Herramientas administrativas -> Programador de tareas.
+*  En Windows 10 para abrir el programador de tareas hacemos Panel de control -> Herramientas administrativas -> Programador de tareas.
 
   ![img](img/img1.png)
 
-  *  Vamos a programar una tarea diferida.
+*  Vamos a programar una tarea diferida.
 
-    *  Abrir un fichero de texto en pantalla.
+  *  Abrir un fichero de texto en pantalla.
 
-    * Abrimos el Programador de tareas y creamos una nueva tarea.
+  * Abrimos el Programador de tareas y creamos una nueva tarea.
 
-        ![img](img/img2.png)
+    ![img](img/img2.png)
 
-    * Elegimos que se ejecute una vez.
+  * Elegimos que se ejecute una vez.
 
-        ![img](img/img3.png)
+    ![img](img/img3.png)
 
-    * Elegimos fecha/hora en la que se ejecutara la tarea.
+  * Elegimos fecha/hora en la que se ejecutara la tarea.
 
-        ![img](img/img4.png)
+    ![img](img/img4.png)
 
-    * Seleccionamos Iniciar un programa.
+  * Seleccionamos Iniciar un programa.
 
-        ![img](img/img5.png)
+    ![img](img/img5.png)
 
-    * Buscamos el programa o script
+  * Buscamos el programa o script
 
-        ![img](img/img6.png)
+    ![img](img/img6.png)
 
-    * Finalizamos la tarea.
+  * Finalizamos la tarea.
 
-        ![img](img/img7.png)
+    ![img](img/img7.png)
 
-    * Comprobación
+  * Comprobación
 
-        ![img](img/img9.png)
+    ![img](img/img9.png)
 
-  *  Iniciar un programa determinado (Explorer).
+*  Iniciar un programa determinado (Explorer).
 
-    * Hacemos los mismos pasos.
+  * Hacemos los mismos pasos.
 
-      ![img](img/img10.png)
+    ![img](img/img10.png)
 
-    * Elegimos la fecha/hora
+  * Elegimos la fecha/hora
 
-      ![img](img/img11.png)
+    ![img](img/img11.png)
 
-    * Seleccionamos el script o programa
+  * Seleccionamos el script o programa
 
-      ![img](img/img12.png)
+    ![img](img/img12.png)
 
-    * Le damos a finalizar
+  * Le damos a finalizar
 
-      ![img](img/img13.png)
+    ![img](img/img13.png)
 
-    * Vemos que tenemos la tarea en proceso.
+  * Vemos que tenemos la tarea en proceso.
 
-      ![img](img/img14.png)
+    ![img](img/img14.png)
 
-    * Y una vez ejecutada
+  * Y una vez ejecutada
 
-      ![img](img/img15.png)
+    ![img](img/img15.png)
 
 ### 2. Windows - Tarea periódica
 
@@ -90,9 +90,9 @@ La tarea programada se define para ejecutarse periódicamente cada intervalo de 
 
     > Este es el script
 
-    ```
-Shutdown.exe -s -t 45 -c "El equipo se apaga en 45 segundo."
-    ```
+
+``Shutdown.exe -s -t 45 -c "El equipo se apaga en 45 segundo."``
+
 
   * Le damos a finalizar.
 
