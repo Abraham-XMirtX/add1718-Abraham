@@ -40,85 +40,148 @@ Vamos a hacer una tarea diferida con Windows. Una tarea diferida se define para 
 
         ![img](img/img9.png)
 
-  *  Iniciar un programa determinado (Firefox).
+  *  Iniciar un programa determinado (Explorer).
 
     * Hacemos los mismos pasos.
 
       ![img](img/img10.png)
 
+    * Elegimos la fecha/hora
+
+      ![img](img/img11.png)
+
+    * Seleccionamos el script o programa
+
+      ![img](img/img12.png)
+
+    * Le damos a finalizar
+
+      ![img](img/img13.png)
+
+    * Vemos que tenemos la tarea en proceso.
+
+      ![img](img/img14.png)
+
+    * Y una vez ejecutada
+
+      ![img](img/img15.png)
+
 ### 2. Windows - Tarea periódica
 
 La tarea programada se define para ejecutarse periódicamente cada intervalo de tiempo.
 
-    Vamos a programar una tarea periódica para apagar el equipo.
-    El comando para apagar el sistema es shutdown. shutdown /?, muestra la ayuda del comando.
+  *  Vamos a programar una tarea periódica para apagar el equipo.
+
+    * Hacemos los mismos pasos.
+
+      ![img](img/img16.png)
+
+    * Fecha/hora
+
+      ![img](img/img17.png)
+
+    * Aqui elegimos Diariamente
+
+      ![img](img/img18.png)
+
+    * Seleccionamos el script
+
+      ![img](img/img19.png)
+
+    > Este es el script
+
+    ```
+Shutdown.exe -s -t 45 -c "El equipo se apaga en 45 segundo."
+    ```
+
+    * Le damos a finalizar.
+
+      ![img](img/img20.png)
+
+    > Una vez que se ejecuta apaga el euipo automanticamente.
 
 ### 3. SO GNU/Linux - Tarea diferida
 
 Vamos a hacer una tarea diferida con GNU/Linux.
 
-    Configurar OpenSUSE
-    Consultar el vídeo Scheduling tasks with at.
+* El servicio atd es el responsable de la ejecución de los comandos at. Comprobar que esté en ejecución:
 
-El servicio atd es el responsable de la ejecución de los comandos at. Comprobar que esté en ejecución:
+  * Abrimos el terminal y ejecutamos la siguiente linea.
 
-    Yast -> Servicios
-    systemctl status atd
+> Este comando es para comprobar el estado.
+  `systemctl status apt`
 
-    Ejemplos de comandos:
+> Este comando para iniciar el programa.
+  `systemctl start apt`
 
-        at, crea una tarea diferida.
-        atq, muestra los trabajos en cola.
-        at -c 1, muestra la configuración del trabajo ID=1.
-        atrm 1, elimina el trabajo con ID=1.
+  ![img](img/img22.png)
 
-    Otra forma de trabajar con at: at 11:45 Feb 28 < scriptname.sh
 
-    Si el usuario no tuviera permisos para ejecutar at, consultar los ficheros: /etc/at.deny y /etc/at.allow.
-    atq, consultamos que no hay ninguna tarea programada.
+  * Ahora vamos a **Yast** => Sevicios, buscamos atd y lo habilitamos.
+
+  ![img](img/img23.png)
+
+  >  Ejemplos de comandos:
+
+  >  at, crea una tarea diferida.
+  >  atq, muestra los trabajos en cola.
+  >  at -c 1, muestra la configuración del trabajo ID=1.
+  > atrm 1, elimina el trabajo con ID=1.
 
 Ejemplo de script que muestra un mensaje de aviso:
 
+````
 #!/bin/sh
 # Mostrar mensaje en pantalla
 DISPLAY=:0
 export DISPLAY
-zenity --info --text="¡Hola nombre-del-alumno!"
+zenity --info --text="¡Hola Abraham!"
+````
 
-    Usar comando at para programar una tarea diferida. Por ejemplo para mostrar un mensaje en pantalla.
-    atq, consultamos que SI hay una tarea programada.
-    at -c 1, muestra la configuración del trabajo ID=1.
-    Capturar imagen cuando se ejecute la tarea.
-    atq, consultamos que ya NO hay tareas.
+* Hacemos un cat del script.  
+
+  ![img](img/img24.png)
+
+* Instalamos el programa zenity
+
+  ![img](img/img25.png)
+
+  > zenity es un programa para general dialogos simples en pantalla.
+
+* Utilizamos el comando **at** para programar un tarea.
+
+  ![img](img/img27.png)
+
+* Una vez que llega a la fecha/hora indicada se ejecuta y muestra el mensaje de el script.
+
+  ![img](img/img26.png)
+
 
 ### 4. GNU/Linux - Tarea periódica
 
-Consultar
+  *  Para programar una tarea periódica tenemos dos formas:
 
-    Vídeo Scheduling tasks with cron
-    Enlaces de interés [Tareas programadas]](https://www.nerion.es/soporte/tutoriales/tareas-programadas-en-linux/)
+      *  Los usuarios normales usan el comando crontab para programar sus tareas periódicas.
 
-    Para programar una tarea periódica tenemos dos formas:
+      *  El usuario root, además puede usar el fichero /etc/crontab para programar las tareas del sistema.
 
-        Los usuarios normales usan el comando crontab para programar sus tareas periódicas.
-        El usuario root, además puede usar el fichero /etc/crontab para programar las tareas del sistema.
+      > Nosotros no vamos a usar root
 
-    crontab -l, para consultar que no hay tareas programadas.
-    Por defecto, la herramienta crontab usa el editor vim para modificar su configuración. Si queremos usar, por ejemplo, el editor nano, en la consola escribimos export VISUAL='nano'.
-    crontab -e, abre el editor para crear una nueva tarea periódica.
-    Definir una tarea periódica (crontab) para apagar el equipo todos los días a una hora/minuto determinada.
-    Para salir del editor vim, escribimos la secuencia ESC, : y wq.
-    crontab -l, para consultar la tarea que tenemos programada.
+      * Vamos a crear el script, por defect viene con el editor de texto **vim**
 
-    Otro script de ejemplo:
+      * Script de ejemplo:
 
-        #!/bin/bash
-        # Añade la fecha/hora a un fichero cron.log
-        date >> /home/usuario/cron.log
+  ```
+          #!/bin/bash
+          # Añade la fecha/hora a un fichero cron.log
+          date >> /home/usuario/cron.log
+  ```
+        ![img](img/img28.png)
 
-    Para definir una tarea ASINCRONA ponemos el script de ejecución en alguno de los directorios siguientes:
+  *  crontab -l, para consultamos las tareas programadas.
 
-        /etc/cron.hourly, cada hora
-        /etc/cron.daily, diariamente
-        /etc/cron.weekly, semanalmente
-        /etc/cron.monthly, mensualmente
+    ![img](img/img29.png)
+
+  * Una vez que se ejecuta nos crea el fichero cron.log con la fecha y ejecutamos crontab -l para ver que no tenemos ninguna tarea programada.
+
+    ![img](img/img30.png)
