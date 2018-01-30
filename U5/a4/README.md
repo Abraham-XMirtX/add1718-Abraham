@@ -176,11 +176,12 @@ zenity --info --text="¡Hola Abraham!"
           # Añade la fecha/hora a un fichero cron.log
           date >> /home/usuario/cron.log
   ```
-        ![img](img/img28.png)
+
+  ![img](img/img28.png)
 
   *  crontab -l, para consultamos las tareas programadas.
 
-    ![img](img/img29.png)
+  ![img](img/img29.png)
 
   * Una vez que se ejecuta nos crea el fichero cron.log con la fecha y ejecutamos crontab -l para ver que no tenemos ninguna tarea programada.
 
