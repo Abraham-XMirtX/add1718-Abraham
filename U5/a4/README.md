@@ -6,7 +6,7 @@ Vamos a hacer una tarea diferida con Windows. Una tarea diferida se define para 
 
   *  En Windows 10 para abrir el programador de tareas hacemos Panel de control -> Herramientas administrativas -> Programador de tareas.
 
-    ![img](img/img1.png)
+  ![img](img/img1.png)
 
   *  Vamos a programar una tarea diferida.
 
@@ -72,21 +72,21 @@ La tarea programada se define para ejecutarse periódicamente cada intervalo de 
 
   *  Vamos a programar una tarea periódica para apagar el equipo.
 
-    * Hacemos los mismos pasos.
+  * Hacemos los mismos pasos.
 
-      ![img](img/img16.png)
+    ![img](img/img16.png)
 
-    * Fecha/hora
+  * Fecha/hora
 
-      ![img](img/img17.png)
+    ![img](img/img17.png)
 
-    * Aqui elegimos Diariamente
+  * Aqui elegimos Diariamente
 
-      ![img](img/img18.png)
+    ![img](img/img18.png)
 
-    * Seleccionamos el script
+  * Seleccionamos el script
 
-      ![img](img/img19.png)
+    ![img](img/img19.png)
 
     > Este es el script
 
@@ -94,9 +94,9 @@ La tarea programada se define para ejecutarse periódicamente cada intervalo de 
 Shutdown.exe -s -t 45 -c "El equipo se apaga en 45 segundo."
     ```
 
-    * Le damos a finalizar.
+  * Le damos a finalizar.
 
-      ![img](img/img20.png)
+  ![img](img/img20.png)
 
     > Una vez que se ejecuta apaga el euipo automanticamente.
 
@@ -185,4 +185,4 @@ zenity --info --text="¡Hola Abraham!"
 
   * Una vez que se ejecuta nos crea el fichero cron.log con la fecha y ejecutamos crontab -l para ver que no tenemos ninguna tarea programada.
 
-    ![img](img/img30.png)
+  ![img](img/img30.png)
