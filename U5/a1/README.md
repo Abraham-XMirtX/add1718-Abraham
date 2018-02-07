@@ -13,7 +13,13 @@ La instalación debemos hacerla en una máquina real.
 
   *  Si vamos a trabajar Vagrant con MV de VirtualBox, hay que comprobar que las versiones de ambos son compatibles entre sí.
 
+  * Vagrant
+
   ![imagen](img/img1.png)
+
+  * VirtualBox
+
+  ![image](img/img00.png)
 
 ## 2.2. Proyecto
 
