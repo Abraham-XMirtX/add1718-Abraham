@@ -27,6 +27,6 @@ else
 	elsif op == "/"
 	  Result_div = num1 / num2
 	  puts "El resultado de #{num1} y #{num2} es #{Result_div}"
-	end
+    end
   end
 end
