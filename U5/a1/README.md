@@ -98,23 +98,23 @@ La instalación debemos hacerla en una máquina real.
 
   *  Modificar el fichero Vagrantfile, de modo que el puerto 4567 del sistema anfitrión sea enrutado al puerto 80 del ambiente virtualizado.
 
-    >    config.vm.network :forwarded_port, host: 4567, guest: 80
+    >config.vm.network :forwarded_port, host: 4567, guest: 80
 
-    ![image](img/img11.png)
+  ![image](img/img11.png)
 
   *  Luego iniciamos la MV (si ya se encuentra en ejecución lo podemos refrescar con vagrant reload)
 
-    ![image](img/img12.png)
+  ![image](img/img12.png)
 
   * Para confirmar que hay un servicio a la escucha en 4567, desde la máquina real podemos ejecutar los siguientes comandos:
 
   >  nmap -p 4500-4600 localhost, debe mostrar 4567/tcp open tram.
 
-    ![image](img/img13.png)
+  ![image](img/img13.png)
 
   >  netstat -ntap, debe mostrar tcp 0.0.0.0:4567 0.0.0.0:* ESCUCHAR.
 
-    ![image](img/img14.png)
+  ![image](img/img14.png)
 
   *  En la máquina real, abrimos el navegador web con el URL http://127.0.0.1:4567.
 
@@ -238,7 +238,7 @@ En los apartados anteriores hemos descargado una caja/box de un repositorio de I
 
   * chmod 700 .ssh
   * chmod 600 .ssh/authorized_keys
-  
+
     ![image](img/img31.png)
 
   *  Poner clave vagrant al usuario vagrant y al usuario root.
