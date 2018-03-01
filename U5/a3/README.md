@@ -443,11 +443,11 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
 
     ![img](img/img63.png)
 
-  *  Comprobar que funciona.
+  * Comprobar que funciona.
 
-    ![img](img/img66.png)
+  ![img](img/img66.png)
 
-    ![img](img/img67.png)
+  ![img](img/img67.png)
 
 # 8. Configuración personalizada: hostalumno5.pp
 
