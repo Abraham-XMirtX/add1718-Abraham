@@ -445,6 +445,10 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
 
   *  Comprobar que funciona.
 
+    ![img](img/img66.png)
+
+    ![img](img/img67.png)
+
 # 8. Configuración personalizada: hostalumno5.pp
 
   *  Crear un nuevo fichero de configuración para la máquina cliente Windows con el nombre /etc/puppet/manifests/classes/hostalumno5.pp.
@@ -454,3 +458,7 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
   * Incluimos en el fichero site.pp
 
     ![img](img/img65.png)
+
+  * Comprobamos
+
+    ![img](img/img68.png)
