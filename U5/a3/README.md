@@ -193,29 +193,29 @@ Vamos a crear una primera configuración para máquina estándar GNU/Linux.
 
   *  tree /etc/puppet, consultar los ficheros/directorios que tenemos creado.
 
-    ![img](img/img29.png)
+  ![img](img/img29.png)
 
   *  Comprobar que el directorio /var/lib/puppet tiene usuario/grupo propietario puppet.
 
-    ![img](img/img30.png)
+  ![img](img/img30.png)
 
   *  Reiniciamos el servicio systemctl restart puppetmaster.
   *  Comprobamos que el servicio está en ejecución de forma correcta.
   *  systemctl status puppetmaster
 
-    ![img](img/img31.png)
+  ![img](img/img31.png)
 
   *  netstat -ntap |grep ruby
 
-    ![img](img/img32.png)
+  ![img](img/img32.png)
 
   *  Consultamos log por si hay errores: `tail /var/log/puppet/*.log`
 
-    ![img](img/img33.png)
+  ![img](img/img33.png)
 
   *  Abrir el cortafuegos para el servicio.
 
-    ![img](img/img34.png)
+  ![img](img/img34.png)
 
 # 3. Instalación y configuración del cliente1
 
@@ -236,7 +236,7 @@ Vamos a la ruta ``/etc/puppet`` y modificamos el archivo puppet.conf
 
   *  Comprobar que el directorio /var/lib/puppet tiene como usuario/grupo propietario puppet.
 
-    ![img](img/img37.png)
+  ![img](img/img37.png)
 
   *  systemctl enable puppet: Activar el servicio en cada reinicio de la máquina.
 
@@ -244,11 +244,11 @@ Vamos a la ruta ``/etc/puppet`` y modificamos el archivo puppet.conf
 
   *  systemctl status puppet: Ver el estado del servicio puppet.
 
-    ![img](img/img38.png)
+  ![img](img/img38.png)
 
   *  Abrir el cortafuegos para el servicio.
 
-    ![img](img/img39.png)
+  ![img](img/img39.png)
 
 # 4. Certificados
 
@@ -297,7 +297,7 @@ Vamos a comprobar que las órdenes (manifiesto) del master, llega bien al client
 
     *  puppet agent --test
 
-      ![img](img/img45.png)
+    ![img](img/img45.png)
 
   * En caso de tener errores:
 
@@ -345,7 +345,7 @@ Ya hemos probado una configuración sencilla en PuppetMaster. Ahora vamos a pasa
 
   *  Modificar /etc/puppet/manifests/site.pp para que se use la configuración de hostlinux2 el lugar de la anterior:
 
-    ![img](img/img48.png)
+  ![img](img/img48.png)
 
   *  Vamos al servidor:
 
@@ -418,19 +418,19 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
 
     `puppet cert list`
 
-      ![img](img/img58.png)
+    ![img](img/img58.png)
 
     `puppet cert sign client 2 `
 
-      ![img](img/img59.png)
+    ![img](img/img59.png)
 
     `puppet cert print cliente2`
 
-      ![img](img/img60.png)
+    ![img](img/img60.png)
 
     * Comprobamos que esta conectado con el master25
 
-      ![img](img/img61.png)
+    ![img](img/img61.png)
 
 
 # 7. Configuración hostwindows4.pp
@@ -449,9 +449,8 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
 
   *  Crear un nuevo fichero de configuración para la máquina cliente Windows con el nombre /etc/puppet/manifests/classes/hostalumno5.pp.
 
-    ![img](img/img64.png)
+  ![img](img/img64.png)
 
   * Incluimos en el fichero site.pp
 
     ![img](img/img65.png)
-  
