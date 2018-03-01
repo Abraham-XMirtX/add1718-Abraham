@@ -51,7 +51,7 @@ Si queremos que nuestro contenedor tenga acceso a la red exterior, debemos activ
 
   *  Para openSUSE13.2 (cuando el método de configuracion de red es Wicked). Yast -> Dispositivos de red -> Encaminamiento -> Habilitar reenvío IPv4.
 
-    ![image](img/img7.png)
+  ![image](img/img7.png)
 
 
   > IMPORTANTE.
@@ -315,7 +315,7 @@ Desde otra terminal hacer docker..., para averiguar el puerto de escucha del ser
 
   ![image](img/img43.png)
 
-7. Migrar las imágenes de docker a otro servidor
+### 7. Migrar las imágenes de docker a otro servidor
 
 ¿Cómo puedo llevar los contenedores docker a un nuevo servidor?
 
@@ -324,7 +324,7 @@ Desde otra terminal hacer docker..., para averiguar el puerto de escucha del ser
 > https://www.odooargentina.com/forum/ayuda-1/question/migrar-todo-a-otro-servidor-imagenes-docker-397
 > http://linoxide.com/linux-how-to/backup-restore-migrate-containers-docker/
 
-Crear un imagen de contenedor:
+* Crear un imagen de contenedor:
 
   *  docker ps, muestra los contenedores que tengo en ejecución.
 
@@ -338,13 +338,13 @@ Crear un imagen de contenedor:
 
     ![image](img/img46.png)
 
-Exportar imagen docker a fichero:
+* Exportar imagen docker a fichero:
 
   *  docker save -o ~/backupXX.tar nombre-alumno/backupXX, guardamos la imagen "nombre-alumno/backupXX" en un fichero tar.
 
     ![image](img/img47.png)
 
-Importar imagen docker desde fichero:
+* Importar imagen docker desde fichero:
 
   *  Nos llevamos el tar a otra máquina con docker instalado, y restauramos.
 
