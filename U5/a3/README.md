@@ -291,13 +291,13 @@ Vamos a comprobar que las órdenes (manifiesto) del master, llega bien al client
 
     * Comprobar que los cambios configurados en Puppet se han realizado.
 
-      ![img](img/img46.png)
+    ![img](img/img46.png)
 
     * Ejecutar comando para forzar la ejecución del agente puppet:
 
     *  puppet agent --test
 
-    ![img](img/img45.png)
+  ![img](img/img45.png)
 
   * En caso de tener errores:
 
@@ -416,15 +416,15 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
     * Reiniciamos la MV.
     Debemos aceptar el certificado en el master para este nuevo cliente.
 
-    `puppet cert list`
+    * `puppet cert list`
 
     ![img](img/img58.png)
 
-    `puppet cert sign client 2 `
+    * `puppet cert sign client 2 `
 
     ![img](img/img59.png)
 
-    `puppet cert print cliente2`
+    * `puppet cert print cliente2`
 
     ![img](img/img60.png)
 
