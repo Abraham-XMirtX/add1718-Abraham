@@ -82,7 +82,7 @@ Nuestro SO base es OpenSUSE, pero vamos a crear un contenedor Debian8, y dentro 
 
 docker images(**Vemos las imágenes disponibles localmente**)
 
-![image](img/img7.png)
+![image](img/img8.png)
 
 docker search debian(**Buscamos en los repositorios de Docker Hub**)
 
