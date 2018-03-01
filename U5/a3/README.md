@@ -13,7 +13,7 @@ Puppet es una herramienta diseñada para administrar la configuración de sistem
 >   * No usar tildes, caracteres especiales (ñ, ü, etc.)
 >    * En OpenSUSE podemos hacer configurar el equipo a través de Yast
 
-* Vamos a usar 3 Maquinas virtuales:
+* Vamos a usar 3 Máquinas virtuales:
 
     * Master: Dará las órdenes de instalación/configuración a los clientes.
       *  S.O: OpenSUSE.
@@ -257,7 +257,7 @@ Para que el master acepte a cliente1 como cliente, se deben intercambiar los cer
 
 ### 4.1 Aceptar certificado
 
-  *  Vamos a la maquina virtual master.
+  *  Vamos a la máquina virtual master.
     Nos aseguramos de que somos el usuario root.
     puppet cert list, consultamos las peticiones pendientes de unión al master:
 
@@ -291,7 +291,7 @@ Vamos a comprobar que las órdenes (manifiesto) del master, llega bien al client
 
     * Comprobar que los cambios configurados en Puppet se han realizado.
 
-    ![img](img/img46.png)
+  ![img](img/img46.png)
 
     * Ejecutar comando para forzar la ejecución del agente puppet:
 
@@ -418,19 +418,19 @@ Ahora vamos a instalar AgentePuppet en Windows. Recordar que debemos instalar la
 
     * `puppet cert list`
 
-    ![img](img/img58.png)
+  ![img](img/img58.png)
 
     * `puppet cert sign client 2 `
 
-    ![img](img/img59.png)
+  ![img](img/img59.png)
 
     * `puppet cert print cliente2`
 
-    ![img](img/img60.png)
+  ![img](img/img60.png)
 
     * Comprobamos que esta conectado con el master25
 
-    ![img](img/img61.png)
+  ![img](img/img61.png)
 
 
 # 7. Configuración hostwindows4.pp
